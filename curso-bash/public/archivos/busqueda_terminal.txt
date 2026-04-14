@@ -1,0 +1,28 @@
+# Crear carpeta de trabajo
+mkdir wildcards
+cd wildcards
+
+# Crear los archivos de prÃ¡ctica
+touch file1.txt file2.txt file3.txt filea.txt fileb.md data.log archivo.csv
+
+# Archivo adicional usado durante la clase
+touch filelargo.txt
+
+# Crear carpeta backup (usada mÃ¡s adelante)
+mkdir backup
+
+# --- Comandos que soportan wildcards ---
+# ls    - listar archivos
+# cp    - copiar archivos
+# mv    - mover archivos
+# rm    - eliminar archivos
+# cat   - mostrar contenido
+# head  - mostrar inicio del archivo
+# tail  - mostrar final del archivo
+# grep  - buscar patrones en archivos
+
+# --- Wildcards aprendidos ---
+# *             -> Todo (cualquier cantidad de caracteres)
+# ?             -> Un Ãºnico carÃ¡cter
+# [ab]          -> AgrupaciÃ³n por caracteres (a o b)
+# {md,log}      -> AgrupaciÃ³n por patrÃ³n/extensiÃ³n

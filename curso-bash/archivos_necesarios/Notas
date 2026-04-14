@@ -1,0 +1,111 @@
+# 📘 Comandos Básicos de Terminal para Principiantes
+
+## 📚 Información General
+- **Curso:** Introducción a la Terminal y Línea de Comandos
+- **Clase:** 4 de 26
+- **Duración aproximada:** 9–10 minutos
+- **Objetivo:** Familiarizar al estudiante con los comandos esenciales de la terminal para navegar, obtener información del sistema y realizar tareas básicas de manera eficiente.
+
+---
+
+## 🎯 Objetivos de la Clase
+- Comprender la utilidad de la terminal en sistemas Linux y macOS.
+- Identificar el usuario activo en la sesión.
+- Conocer la ubicación actual dentro del sistema de archivos.
+- Listar y analizar el contenido de directorios.
+- Utilizar comandos para visualizar información del sistema.
+- Acceder a la documentación de los comandos.
+- Interpretar los colores y símbolos mostrados en la terminal.
+
+---
+
+## 🖥️ ¿Por qué usar la Terminal?
+Aunque al principio puede parecer compleja, la terminal permite:
+- Ejecutar tareas de forma rápida y eficiente.
+- Automatizar procesos mediante scripts.
+- Acceder a funcionalidades avanzadas del sistema.
+- Tener un mayor control sobre archivos y directorios.
+
+---
+
+## 👤 Identificación del Usuario
+
+### `whoami`
+**Descripción:**  
+Muestra el nombre del usuario con el que se ha iniciado sesión en la terminal.
+
+**Uso:**
+```bash
+whoami
+
+
+| Comando   | Descripción                                                            |
+| --------- | ---------------------------------------------------------------------- |
+| `ls`      | Muestra archivos visibles.                                             |
+| `ls -a`   | Incluye archivos ocultos (comienzan con `.`).                          |
+| `ls -l`   | Muestra información detallada (permisos, propietario, tamaño y fecha). |
+| `ls -la`  | Combina `-a` y `-l`.                                                   |
+| `ls -lah` | Añade tamaños en formato legible (KB, MB, GB).                         |
+
+
+INTERPRETES
+
+drwxr-xr-x  5 user  staff   160B Jan 10 10:00 carpeta
+-rw-r--r--  1 user  staff   1.2K Jan 10 10:01 archivo.txt
+
+
+
+uname -a. -> Muestra la fecha y hora del sistema
+
+
+
+
+# 📘 Navegación entre Directorios en Linux con Comandos de Terminal
+
+## 📚 Información General
+- **Curso:** Introducción a la Terminal y Línea de Comandos
+- **Clase:** 5 de 26
+- **Duración aproximada:** 11 minutos
+- **Tema:** Navegación entre directorios en Linux
+- **Objetivo:** Aprender a desplazarse eficientemente por el sistema de archivos utilizando rutas absolutas, rutas relativas y símbolos especiales.
+
+---
+
+## 🎯 Objetivos de la Clase
+- Comprender la estructura jerárquica del sistema de archivos en Linux.
+- Utilizar el comando `cd` para moverse entre directorios.
+- Diferenciar entre rutas absolutas y relativas.
+- Emplear símbolos especiales como `/`, `.`, `..` y `~`.
+- Verificar la ubicación actual con `pwd`.
+- Utilizar comandos avanzados como `pushd`, `popd` y `dirs`.
+- Mejorar la eficiencia mediante el uso del autocompletado con la tecla `Tab`.
+
+---
+
+## 🌳 Estructura del Sistema de Archivos
+
+El sistema de archivos en Linux tiene una estructura jerárquica en forma de árbol cuya raíz es el directorio `/`. Todos los archivos y carpetas del sistema cuelgan de esta raíz.
+
+### 📂 Directorios Comunes
+
+| Directorio | Descripción |
+|-----------|-------------|
+| `/` | Raíz del sistema de archivos. |
+| `/home` | Directorios personales de los usuarios. |
+| `/root` | Directorio del usuario administrador. |
+| `/bin` | Programas ejecutables esenciales. |
+| `/etc` | Archivos de configuración del sistema. |
+| `/var` | Archivos variables como logs. |
+| `/dev` | Archivos que representan dispositivos. |
+| `/lib` / `/lib64` | Bibliotecas necesarias para el sistema. |
+
+---
+
+## 📍 Comando `pwd` – Ubicación Actual
+
+### 🔹 Descripción
+El comando `pwd` (Print Working Directory) muestra la ruta absoluta del directorio en el que se encuentra el usuario.
+
+### 🔹 Ejemplo
+```bash
+pwd
