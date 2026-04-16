@@ -30,31 +30,51 @@ const MODULES = [
   {
     id: 1, section: 0, duration: '02:07',
     title: 'Ventajas de dominar la terminal de comandos',
-    summary: 'Dominar la terminal es una habilidad estratégica para cualquier profesional técnico. Aporta velocidad, precisión y un conocimiento profundo del funcionamiento interno del sistema operativo. Con la terminal, automatizas tareas en segundos y accedes a herramientas avanzadas, ganando control total sobre tu entorno digital.',
+    summary: 'Para un ingeniero de Machine Learning o científico de datos, la terminal es tu herramienta más poderosa. Desde preparar datasets hasta entrenar modelos en servidores remotos, todo pasa por la línea de comandos. Automatizas pipelines de datos, gestionas entornos virtuales, lanzas entrenamientos en GPU y monitoreas experimentos — todo más rápido que cualquier interfaz gráfica.',
     blocks: [
       { type: 'list', title: 'Ventajas principales', items: [
         ['Velocidad y precisión', 'Operaciones que en GUI toman horas, en segundos.'],
         ['Automatización', 'Scripts que reducen tareas repetitivas a un solo comando.'],
         ['Control total', 'Sabes exactamente qué ocurre al ejecutar cada comando.'],
         ['Conocimiento profundo', 'Entiendes cómo se gestionan archivos, procesos e información.'],
-        ['Herramientas avanzadas', 'Git, Docker, Htop, Nmap — todas viven en la terminal.'],
+        ['Herramientas de ML/DS', 'Git, Docker, conda, pip, jupyter, mlflow, dvc — todas viven en la terminal.'],
         ['Personalización extrema', 'Scripts, flujos y ambiente a medida.'],
       ]},
-      { type: 'note', variant: 'info', text: 'Compatibilidad total: Windows, Linux, macOS e incluso móviles. Empresas como Google, Amazon, Facebook y Red Hat la consideran una habilidad imprescindible.' },
+      { type: 'note', variant: 'info', text: 'En Machine Learning y Data Science, la terminal es inevitable: servidores de entrenamiento con GPU (AWS, GCP, Lambda Labs) solo ofrecen acceso SSH, Docker corre por CLI, y herramientas como conda, pip, dvc y mlflow viven en la terminal.' },
     ],
     activity: {
-      goal: 'Preparar el terreno: elegir dónde vivirá tu Data Pipeline.',
-      commands: [
-        'echo "Mi Data Pipeline comienza hoy"',
+      goal: 'Preparar el terreno: tu primer comando y la configuración del proyecto.',
+      steps: [
+        {
+          label: 'Tu primer comando',
+          commands: ['echo "Mi Data Pipeline comienza hoy"'],
+          hint: 'echo imprime texto en la terminal. Es la forma más simple de verificar que todo funciona.',
+        },
+        {
+          label: 'Crear y preparar la carpeta del proyecto',
+          commands: [
+            'mkdir -p ~/data-pipeline',
+            'cd ~/data-pipeline',
+            'mv ~/Descargas/data-pipeline-archivos.zip .',
+            'unzip data-pipeline-archivos.zip',
+            'ls -lh',
+          ],
+          hint: 'En WSL la ruta de Descargas es /mnt/c/Users/TuUsuario/Downloads/',
+        },
       ],
-      expected: 'La terminal imprime el mensaje. Ese es tu primer comando — bienvenido al curso.',
-      connection: 'En los próximos módulos construirás un proyecto real llamado "Data Pipeline" que organiza, procesa y analiza un dataset. Cada comando que aprendas se aplicará aquí.',
+      expected: `1. echo → imprime "Mi Data Pipeline comienza hoy" en pantalla.
+2. mkdir -p → crea la carpeta ~/data-pipeline (la flag -p evita error si ya existe).
+3. cd → te mueve dentro de esa carpeta.
+4. mv → mueve el ZIP desde Descargas hasta la carpeta actual (el punto "." significa "aquí").
+5. unzip → extrae los archivos del ZIP.
+6. ls -lh → lista los archivos con tamaños legibles. Deberías ver: marvel_wiki.csv, linux.txt y busqueda_terminal.txt.`,
+      connection: 'Acabas de usar echo, mkdir, cd, mv, unzip y ls — seis comandos reales en tu primer módulo. En los próximos módulos profundizarás en cada uno mientras construyes un Data Pipeline completo con estos archivos.',
     },
   },
   {
     id: 2, section: 0, duration: '04:04',
     title: 'Qué es una terminal y cómo funciona con comandos básicos',
-    summary: 'La terminal es la interfaz donde escribes comandos. Detrás vive un programa llamado shell (bash, zsh, fish…) que interpreta lo que escribes y lo traduce en instrucciones para el sistema operativo. Un comando típico tiene tres partes: la acción, las opciones (flags) y los argumentos.',
+    summary: 'La terminal es la interfaz donde escribes comandos. Detrás vive un programa llamado shell (bash, zsh, fish…) que interpreta lo que escribes y lo traduce en instrucciones para el sistema operativo. En ML/Data Science, entender esta anatomía es clave: ejecutarás scripts de Python, herramientas como pip, conda, jupyter y docker — todos desde aquí.',
     blocks: [
       { type: 'table', title: 'Conceptos clave', headers: ['Concepto', 'Definición'], rows: [
         ['Terminal', 'La ventana donde escribes comandos. Intermediario visual.'],
@@ -62,7 +82,7 @@ const MODULES = [
         ['Shell', 'Intérprete de comandos. Ejemplos: bash, zsh, fish, sh.'],
         ['Comando', 'Instrucción textual que el shell ejecuta.'],
       ]},
-      { type: 'code', title: 'Anatomía de un comando', code: `ls -la /home/francisco
+      { type: 'code', title: 'Anatomía de un comando', code: `ls -la /home/usuario
 #  │   │   └── argumento (sobre qué actuar)
 #  │   └────── opciones / flags (modifican el comportamiento)
 #  └────────── comando (la acción a ejecutar)` },
@@ -126,7 +146,7 @@ cd /mnt/d/proyectos/
   {
     id: 4, section: 0, duration: '09:50',
     title: 'Comandos básicos de terminal para principiantes',
-    summary: 'whoami, pwd, ls y clear son los cuatro comandos que te orientan en la terminal: quién eres, dónde estás, qué hay aquí y cómo limpiar. Con las opciones de ls aprenderás a leer permisos, fechas y tamaños.',
+    summary: 'whoami, pwd, ls y clear son los cuatro comandos que te orientan en la terminal: quién eres, dónde estás, qué hay aquí y cómo limpiar. Como data scientist, los usarás constantemente para navegar entre datasets, notebooks y ambientes de entrenamiento.',
     blocks: [
       { type: 'commands', title: 'Orientación', items: [
         ['whoami', 'Nombre de usuario activo.'],
@@ -149,8 +169,8 @@ cd /mnt/d/proyectos/
         ['man <comando>', 'Manual completo de un comando.'],
         ['<comando> --help', 'Ayuda rápida.'],
       ]},
-      { type: 'code', title: 'Leyendo ls -la', code: `drwxr-xr-x  4 francisco francisco 4096 abr 13 10:30 proyectos
--rw-r--r--  1 francisco francisco 1205 abr 13 10:30 datos.csv
+      { type: 'code', title: 'Leyendo ls -la', code: `drwxr-xr-x  4 usuario usuario 4096 abr 13 10:30 proyectos
+-rw-r--r--  1 usuario usuario 1205 abr 13 10:30 datos.csv
 
 # d = directorio, - = archivo, l = link simbólico
 # rwx = lectura / escritura / ejecución (dueño, grupo, otros)
@@ -178,7 +198,7 @@ cd /mnt/d/proyectos/
         ['-', 'Directorio anterior', 'cd -'],
       ]},
       { type: 'code', title: 'Rutas absolutas vs relativas', code: `# ABSOLUTA: empieza desde la raíz /
-cd /home/francisco/proyectos/data
+cd /home/usuario/proyectos/data
 
 # RELATIVA: parte del directorio actual
 cd proyectos/data
@@ -193,7 +213,7 @@ cd ../../otro_proyecto     # Subir 2 niveles y entrar` },
       ]},
       { type: 'code', title: 'Filesystem de Linux', code: `/                    ← Raíz absoluta
 ├── home/            ← Carpetas personales
-│   └── francisco/   ← Tu HOME (~)
+│   └── usuario/     ← Tu HOME (~)
 ├── etc/             ← Configuración del sistema
 ├── var/             ← Datos variables (logs, cache)
 │   └── log/         ← Logs del sistema
@@ -273,7 +293,7 @@ cd ../../otro_proyecto     # Subir 2 niveles y entrar` },
   {
     id: 7, section: 1, duration: '12:16',
     title: 'Exploración y manipulación de archivos de texto',
-    summary: 'cat muestra todo el contenido, less lo navega interactivamente, head/tail ven el inicio o el final, wc cuenta líneas/palabras y awk manipula columnas de CSVs. tail -f sigue archivos en tiempo real — ideal para logs.',
+    summary: 'cat muestra todo el contenido, less lo navega interactivamente, head/tail ven el inicio o el final, wc cuenta líneas/palabras y awk manipula columnas de CSVs. En ciencia de datos estos comandos son esenciales: inspeccionar datasets antes de cargarlos en pandas, verificar formatos y contar registros sin abrir Python.',
     blocks: [
       { type: 'commands', title: 'cat: concatenar y mostrar', items: [
         ['cat archivo.txt', 'Mostrar todo el contenido.'],
@@ -389,7 +409,7 @@ EOF`,
   {
     id: 9, section: 2, duration: '08:59',
     title: 'Comandos GREP y FIND para búsquedas avanzadas',
-    summary: 'grep busca patrones DENTRO de archivos. find localiza archivos POR nombre, tipo, tamaño o fecha. Ambos soportan expresiones regulares. Combinados con pipes y xargs son la base del procesamiento masivo en la terminal.',
+    summary: 'grep busca patrones DENTRO de archivos. find localiza archivos POR nombre, tipo, tamaño o fecha. En ML, los usarás para buscar hiperparámetros en logs de experimentos, localizar checkpoints de modelos por tamaño/fecha, y filtrar resultados masivos — habilidades que aceleran tu flujo de investigación.',
     blocks: [
       { type: 'commands', title: 'grep: buscar patrones dentro de archivos', items: [
         [`grep 'error' app.log`, 'Líneas que contienen "error".'],
@@ -474,7 +494,7 @@ EOF`,
   {
     id: 11, section: 3, duration: '11:41',
     title: 'Redirecciones de terminal en Linux',
-    summary: 'Cada proceso tiene tres flujos: stdin (0), stdout (1) y stderr (2). Las redirecciones los conectan a archivos o a otros comandos. > escribe, >> agrega, | conecta, 2> captura errores, &> captura todo. Son la base de cualquier pipeline serio.',
+    summary: 'Cada proceso tiene tres flujos: stdin (0), stdout (1) y stderr (2). Las redirecciones los conectan a archivos o a otros comandos. > escribe, >> agrega, | conecta, 2> captura errores, &> captura todo. En ML, redirigirás logs de entrenamiento a archivos, encadenarás preprocesamiento de datos y capturarás errores de tus scripts de Python.',
     blocks: [
       { type: 'table', title: 'File descriptors', headers: ['FD', 'Nombre', 'Default'], rows: [
         ['0', 'stdin', 'Teclado'],
@@ -594,7 +614,7 @@ source ~/.bashrc` },
     title: 'Gestión de permisos en archivos y directorios',
     summary: 'Los permisos en Linux tienen tres acciones (r, w, x) aplicadas a tres grupos (dueño, grupo, otros). Se asignan con chmod usando notación numérica (7=rwx, 5=rx, 4=r) o simbólica (u+x, g-w). chown cambia dueño, chgrp cambia grupo. 755 para scripts ejecutables, 644 para archivos normales, 600 para llaves SSH.',
     blocks: [
-      { type: 'code', title: 'Estructura de permisos', code: `-rwxr-xr-x  1  francisco  devs  4096  abr 13  script.sh
+      { type: 'code', title: 'Estructura de permisos', code: `-rwxr-xr-x  1  usuario  devs  4096  abr 13  script.sh
  │├─┤├─┤├─┤
  │ │   │  └── Otros (o)
  │ │   └───── Grupo (g)
@@ -617,8 +637,8 @@ chmod 600 .ssh/id_rsa    # rw------- (clave SSH)` },
         ['chmod g+w archivo.txt', 'Agregar escritura al grupo.'],
         ['chmod a+r archivo.txt', 'Lectura para todos.'],
         ['chmod -R 755 directorio/', 'Recursivo.'],
-        ['sudo chown francisco archivo.txt', 'Cambiar dueño.'],
-        ['sudo chown francisco:devs archivo.txt', 'Dueño y grupo.'],
+        ['sudo chown usuario archivo.txt', 'Cambiar dueño.'],
+        ['sudo chown usuario:devs archivo.txt', 'Dueño y grupo.'],
         ['sudo chgrp devs archivo.txt', 'Solo grupo.'],
       ]},
       { type: 'note', variant: 'warning', text: '777 = rwx para todo el mundo. Casi siempre es un error de seguridad. Mantén permisos al mínimo necesario.' },
@@ -639,7 +659,7 @@ chmod 600 .ssh/id_rsa    # rw------- (clave SSH)` },
   {
     id: 15, section: 4, duration: '08:27',
     title: 'Variables de entorno',
-    summary: 'Las variables de entorno almacenan datos accesibles para programas y scripts. Se invocan con $. Las locales viven solo en la sesión; `export` las hace globales (heredadas por procesos hijos). Para hacerlas permanentes se agregan a ~/.bashrc.',
+    summary: 'Las variables de entorno almacenan datos accesibles para programas y scripts. En ML/Data Science son críticas: CUDA_VISIBLE_DEVICES selecciona GPUs, PYTHONPATH configura módulos, WANDB_API_KEY conecta con trackers de experimentos. Dominarlas es la diferencia entre un entorno reproducible y el caos.',
     blocks: [
       { type: 'commands', title: 'Crear y usar', items: [
         ['MI_VAR="hola"', 'Variable local (solo esta sesión).'],
@@ -649,7 +669,7 @@ chmod 600 .ssh/id_rsa    # rw------- (clave SSH)` },
         ['unset MI_VAR', 'Eliminar variable.'],
       ]},
       { type: 'commands', title: 'Variables del sistema', items: [
-        ['echo $HOME', '/home/francisco.'],
+        ['echo $HOME', '/home/usuario.'],
         ['echo $USER', 'Tu usuario actual.'],
         ['echo $SHELL', 'Shell en uso.'],
         ['echo $PATH', 'Directorios donde buscar ejecutables.'],
@@ -762,7 +782,7 @@ brew --version` },
   {
     id: 18, section: 4, duration: '06:40',
     title: 'Procesos en foreground y background',
-    summary: 'Los procesos en foreground bloquean la terminal. Los de background corren sin bloquear y se lanzan con & al final. Ctrl+Z los pausa, Ctrl+C los mata. fg/bg los mueven entre estados. nohup hace que sobrevivan al cierre de la terminal.',
+    summary: 'Los procesos en foreground bloquean la terminal. Los de background corren sin bloquear y se lanzan con & al final. Esto es fundamental en ML: lanzar entrenamientos largos con nohup o &, pausar un proceso con Ctrl+Z para inspeccionar métricas, y manejar múltiples experimentos simultáneos.',
     blocks: [
       { type: 'commands', title: 'Ejecución y control', items: [
         ['sleep 30', 'Foreground: bloquea 30 segundos.'],
@@ -797,7 +817,7 @@ brew --version` },
   {
     id: 19, section: 4, duration: '13:02',
     title: 'Administración de procesos con PS, Top y Kill',
-    summary: 'ps saca una foto de los procesos activos. top y htop los muestran en tiempo real. kill termina procesos por PID: señal 15 (TERM) termina limpio, señal 9 (KILL) fuerza. pgrep y pidof ayudan a encontrar PIDs por nombre.',
+    summary: 'ps saca una foto de los procesos activos. top y htop los muestran en tiempo real. En entornos de ML, monitorear GPU/CPU durante entrenamientos (nvidia-smi, htop) y matar procesos que consumen demasiada memoria es parte del día a día. kill, pgrep y pidof son tus herramientas.',
     blocks: [
       { type: 'commands', title: 'ps: snapshot de procesos', items: [
         ['ps', 'Procesos del terminal actual.'],
@@ -953,7 +973,7 @@ n             Siguiente resultado` },
   {
     id: 22, section: 5, duration: '08:42',
     title: 'Tmux para múltiples terminales',
-    summary: 'tmux permite tener múltiples ventanas y paneles en una sola terminal, y mantener sesiones vivas aunque cierres la terminal. Prefijo Ctrl+b + tecla: c (nueva ventana), % (split vertical), " (split horizontal), d (desconectar). Vuelves con `tmux attach`.',
+    summary: 'tmux permite tener múltiples ventanas y paneles en una sola terminal, y mantener sesiones vivas aunque cierres la terminal. Indispensable en ML: lanzas un entrenamiento en un panel, monitoreas nvidia-smi en otro, y editas hiperparámetros en un tercero — todo sin perder nada al desconectarte del servidor.',
     blocks: [
       { type: 'commands', title: 'Iniciar y gestionar sesiones', items: [
         ['sudo apt install tmux', 'Instalar en Linux.'],
@@ -995,7 +1015,7 @@ n             Siguiente resultado` },
   {
     id: 23, section: 5, duration: '12:02',
     title: 'Comandos de red',
-    summary: 'ip a muestra tus interfaces. ping verifica conectividad. curl hace peticiones HTTP (útil para APIs). wget descarga archivos. ssh te conecta a servidores remotos, scp copia archivos por SSH. nmap escanea puertos.',
+    summary: 'ip a muestra tus interfaces. ping verifica conectividad. curl hace peticiones HTTP (útil para APIs de ML como OpenAI o HuggingFace). wget descarga datasets y modelos preentrenados. ssh te conecta a servidores de entrenamiento con GPU, scp transfiere datasets y checkpoints entre máquinas.',
     blocks: [
       { type: 'commands', title: 'Información de red', items: [
         ['ip a', 'Interfaces y direcciones IP.'],
@@ -1652,13 +1672,27 @@ function ActivityCard({ module, completed, onToggle }) {
           <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">Objetivo</div>
           <p className="text-sm text-slate-300">{activity.goal}</p>
         </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-2">Comandos a ejecutar</div>
-          <CodeBlock code={activity.commands.join('\n')} />
-        </div>
+        {activity.steps ? (
+          activity.steps.map((step, i) => (
+            <div key={i}>
+              <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">Paso {i + 1} — {step.label}</div>
+              <CodeBlock code={step.commands.join('\n')} />
+              {step.hint && (
+                <p className="mt-2 text-xs text-amber-300/80 bg-amber-500/10 border border-amber-500/20 rounded px-3 py-2">
+                  <strong>💡 Tip:</strong> {step.hint}
+                </p>
+              )}
+            </div>
+          ))
+        ) : (
+          <div>
+            <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-2">Comandos a ejecutar</div>
+            <CodeBlock code={activity.commands.join('\n')} />
+          </div>
+        )}
         <div>
           <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">Resultado esperado</div>
-          <p className="text-sm text-slate-300">{activity.expected}</p>
+          <p className="text-sm text-slate-300 whitespace-pre-line">{activity.expected}</p>
         </div>
         <div className="pt-3 border-t border-slate-800">
           <div className="text-[10px] uppercase tracking-wider text-indigo-400 font-semibold mb-1">Conexión con el proyecto</div>
@@ -1983,6 +2017,88 @@ function CheatView() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// SETUP VIEW
+// ═══════════════════════════════════════════════════════════════════════════
+
+const SETUP_FILES = [
+  { name: 'marvel_wiki.csv', desc: 'Dataset principal — personajes de Marvel con atributos para análisis.', size: '2.3 MB' },
+  { name: 'linux.txt', desc: 'Archivo de texto para practicar búsqueda, filtrado y edición.', size: '6 KB' },
+
+  { name: 'busqueda_terminal.txt', desc: 'Texto con patrones para practicar grep y expresiones regulares.', size: '830 B' },
+];
+
+function SetupView({ onStart }) {
+  return (
+    <main className="flex-1 overflow-y-auto">
+      <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 space-y-8">
+
+        {/* Header */}
+        <div className="text-center space-y-3">
+          <h1 className="text-2xl md:text-3xl font-bold text-emerald-400 font-mono">Antes de comenzar</h1>
+          <p className="text-slate-400 max-w-xl mx-auto">
+            Este curso incluye un proyecto práctico llamado <span className="text-slate-200 font-semibold">Data Pipeline</span>.
+            Necesitarás estos archivos para completar las actividades de cada módulo.
+          </p>
+        </div>
+
+        {/* Step 1 — Download */}
+        <section className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-400 font-bold text-sm font-mono">1</span>
+            <h2 className="text-lg font-semibold text-slate-100">Descarga los archivos del proyecto</h2>
+          </div>
+          <p className="text-sm text-slate-400 ml-11">Haz clic en el botón para descargar todos los archivos en un solo ZIP, o descárgalos individualmente.</p>
+          <div className="ml-11">
+            <a
+              href="/archivos/data-pipeline-archivos.zip"
+              download
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors"
+            >
+              ⬇ Descargar todo (ZIP · 406 KB)
+            </a>
+          </div>
+          <div className="ml-11 mt-3 space-y-2">
+            <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Archivos incluidos</p>
+            {SETUP_FILES.map(f => (
+              <div key={f.name} className="flex items-center justify-between gap-4 py-2 px-3 rounded bg-slate-800/60 text-sm">
+                <div className="min-w-0">
+                  <a href={`/archivos/${f.name}`} download className="text-emerald-400 hover:underline font-mono text-xs">{f.name}</a>
+                  <p className="text-slate-500 text-xs mt-0.5">{f.desc}</p>
+                </div>
+                <span className="text-slate-600 text-xs shrink-0 font-mono">{f.size}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Step 2 — Go to Module 1 */}
+        <section className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-400 font-bold text-sm font-mono">2</span>
+            <h2 className="text-lg font-semibold text-slate-100">Coloca los archivos siguiendo el Módulo 1</h2>
+          </div>
+          <p className="text-sm text-slate-400 ml-11">
+            La actividad del <strong className="text-slate-200">Módulo 1</strong> te guía paso a paso para crear la carpeta del proyecto,
+            mover los archivos y verificar que todo esté listo — usando la terminal desde el primer minuto.
+            Así empiezas a practicar con comandos reales desde el inicio.
+          </p>
+          <div className="ml-11">
+            <button
+              onClick={onStart}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors"
+            >
+              ▶ Ir al Módulo 1
+            </button>
+          </div>
+        </section>
+
+
+      </div>
+    </main>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // MAIN
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -2006,6 +2122,7 @@ export default function BashCourse() {
   }, [currentModuleId]);
 
   const tabs = [
+    { id: 'setup', label: 'Setup', icon: '📦' },
     { id: 'curso', label: 'Curso', icon: '▶' },
     { id: 'proyecto', label: 'Proyecto', icon: '◆' },
     { id: 'cheat', label: 'Cheat Sheet', icon: '⌘' },
@@ -2053,6 +2170,7 @@ export default function BashCourse() {
         </div>
       </header>
 
+      {tab === 'setup' && <SetupView onStart={() => setTab('curso')} />}
       {tab === 'curso' && (
         <CursoView
           currentModuleId={currentModuleId}
